@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 export interface ITransferir {
-  valor: number;
-  destino: number;
+  valor: string;
+  destino: string;
 }
 
 @Component({
@@ -13,8 +13,8 @@ export interface ITransferir {
 export class NovaTransferenciaComponent {
   @Output() aoTransferir: EventEmitter<ITransferir> = new EventEmitter();
 
-  valor: number = 12;
-  destino: number = 222;
+  valor: string = '';
+  destino: string = '';
 
   transferir() {
     console.log('Solicitada nova transferência');

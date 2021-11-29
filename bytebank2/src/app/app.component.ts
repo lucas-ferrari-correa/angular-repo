@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { ITransferir } from './nova-transferencia/nova-transferencia.component';
 
+export interface ITransferirReceived {
+  valor: string;
+  destino: string;
+  data: Date;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +15,14 @@ import { ITransferir } from './nova-transferencia/nova-transferencia.component';
 export class AppComponent {
   title = 'bytebank2';
 
-  valor: number = 0;
-  destino: number = 0;
+  transferencias: ITransferirReceived[] = [];
+
 
   transferir(transferencia: ITransferir) {
-    this.valor = transferencia.valor;
-    this.destino = transferencia.destino;
+    const transferenciaRecebida: ITransferirReceived = {
+      ...transferencia,
+      data: new Date(),
+    }
+    this.transferencias.push(transferenciaRecebida);
   }
 }
