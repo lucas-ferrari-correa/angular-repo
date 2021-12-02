@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Transferencia } from './models/transferencia.model';
 import { ITransferir } from './nova-transferencia/nova-transferencia.component';
+import { TransferenciaService } from './services/transferencia.service';
 
 export interface ITransferirReceived {
   valor: string;
@@ -17,12 +19,7 @@ export class AppComponent {
 
   transferencias: ITransferirReceived[] = [];
 
-
-  transferir(transferencia: ITransferir) {
-    const transferenciaRecebida: ITransferirReceived = {
-      ...transferencia,
-      data: new Date(),
-    }
-    this.transferencias.push(transferenciaRecebida);
-  }
+  constructor(
+    private service: TransferenciaService
+  ) {}
 }
